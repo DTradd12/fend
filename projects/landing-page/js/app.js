@@ -14,21 +14,21 @@ let anchors = document.getElementsByClassName("menu__link");
  */
 
 // build the nav
-for (let i = 0; i < landingContainer.length; i++) {
-    // Create new anchor element.
-    let navBarListItem = document.createElement("a");
+(function () {
+    for (let i = 0; i < landingContainer.length; i++) {
+        // Create new anchor element.
+        let navBarListItem = document.createElement("li");
 
-    // Get text content of landingContainers First Element
-    navBarListItem.textContent = landingContainer[i].firstElementChild.textContent;
-    // Add a new class to the navBarListItem.
-    navBarListItem.classList.add("menu__link");
-    // Add the class tag as an href
-    navBarListItem.href = "#" + landingContainer[i].parentElement.id;
-    // Give the navBarListItem an id.
-    navBarListItem.id = landingContainer[i].parentElement.id;
-    // Append the new navBarListItem to the navBarList element.
-    navBarList.appendChild(navBarListItem);
-}
+        // Get text content of landingContainers First Element
+        navBarListItem.textContent = landingContainer[i].firstElementChild.textContent;
+        // Add a new class to the navBarListItem.
+        navBarListItem.classList.add("menu__link");
+        // Give the navBarListItem an id.
+        navBarListItem.id = landingContainer[i].parentElement.id;
+        // Append the new navBarListItem to the navBarList element.
+        navBarList.appendChild(navBarListItem);
+    }
+}());
 
 // Add class 'active' to section when near top of viewport
 document.addEventListener("scroll", function viewPortCheck() {
@@ -43,12 +43,28 @@ document.addEventListener("scroll", function viewPortCheck() {
             bounding.right <= (window.innerWidth)
             && bounding.bottom <= (window.innerHeight)
         ) {
-            sections[i].classList.add("your-active-class");
+            sections[i].classList.add("active-class");
+            sections[i].classList.remove("inactive-class");
         } else {
-            sections[i].classList.remove("your-active-class");
+            sections[i].classList.add("inactive-class");
+            sections[i].classList.remove("active-class");
         }
     }
+    for (let i = 0; i < sections.length; i++){
+        if (sections[i].className === "active-class") {
+            for(let x =0; x < anchors.length; x++){
+                if (anchors[x].id === sections[i].id) {
+                    anchors[x].classList.add("active");
+                    anchors[x].classList.remove("inactive");
+                } else {
+                    anchors[x].classList.add("inactive");
+                    anchors[x].classList.remove("active");
+                }
+                }
+            }
+        }
 });
+
 
 
 // Scroll to anchor ID using scrollTO event
@@ -66,3 +82,8 @@ for (let i=0; i<anchors.length;i++){
  *
  */
 
+for (let i = 0; i < sections.length; i++){
+    if(sections[i].classList.value === "active-class"){
+        sections[i].classList.value;
+    }
+}
