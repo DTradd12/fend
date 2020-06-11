@@ -81,9 +81,3 @@ for (let i=0; i<anchors.length;i++){
  * Begin Events
  *
  */
-
-for (let i = 0; i < sections.length; i++){
-    if(sections[i].classList.value === "active-class"){
-        sections[i].classList.value;
-    }
-}
