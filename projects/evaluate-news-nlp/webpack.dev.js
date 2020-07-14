@@ -11,6 +11,11 @@ module.exports = {
     module: {
         rules: [
             {
+                parser: {
+                    amd: false
+                }
+            },
+            {
                 test: '/\.js$/',
                 exclude: /node_modules/,
                 loader: "babel-loader"
